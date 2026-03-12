@@ -1,0 +1,15 @@
+{
+  "name": "inmarket-sdr-agent",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Automated SDR research and email drafting system with React frontend, Express backend, and MCP microservice.",
+  "workspaces": [
+    "frontend",
+    "backend",
+    "backend/mcp-server"
+  ],
+  "scripts": {
+    "dev:frontend": "npm --workspace frontend run dev",
+    "dev:backend": "npm --workspace backend run dev"
+  }
+}
