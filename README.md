@@ -2,6 +2,12 @@
 
 An automated Sales Development Representative (SDR) research and email drafting system. Given a company name, it fetches recent news via the Serper.dev API, synthesizes strategic insights using an LLM, and drafts a personalized outreach email—all through a clean single-page interface.
 
+## Live Demo
+
+**Frontend:** https://inmarket-sdr-agent-frontend.onrender.com (Hosted Website)
+
+**Backend API:** https://inmarket-sdr-agent-backend.onrender.com/health
+
 ---
 
 ## Table of Contents
@@ -394,45 +400,17 @@ The Express route wraps the entire agent call in a `Promise.race` with a 60-seco
 
 ## Deployment Discussion
 
-### Docker Compose (Recommended for Self-Hosted)
+This project is deployed fully on Render.
 
-The system has three natural containers:
+### Frontend Deployment
 
-```yaml
-services:
-  frontend:
-    build: ./frontend
-    ports: ["3000:3000"]
+The frontend is deployed as a Static Site on Render:
+https://inmarket-sdr-agent-frontend.onrender.com
 
-  backend:
-    build: ./backend
-    ports: ["4000:4000"]
-    env_file: ./backend/.env
+### Backend Deployment
 
-  # MCP server is spawned as a child process by the backend,
-  # so it does not need its own container. It ships inside
-  # the backend image.
-```
-
-The MCP server runs as a child process of the backend, so it does not require a separate container or network endpoint. It ships inside the backend Docker image.
-
-### Serverless Backend
-
-The backend can be deployed as a serverless function (e.g. AWS Lambda, Google Cloud Functions) since each request is stateless. The MCP server would be bundled into the deployment package. Considerations:
-
-- Cold start latency (~2-3s) adds to the LLM call time.
-- The 60-second timeout fits within most serverless limits.
-- Environment variables are set via the platform's secrets manager.
-
-### Frontend on Vercel / Netlify
-
-The Vite frontend is a static build:
-
-```bash
-cd frontend && npm run build
-```
-
-Deploy the `dist/` folder to Vercel or Netlify. Set `VITE_API_URL` as an environment variable pointing to the backend URL.
+The backend is deployed as a Web Service on Render:
+https://inmarket-sdr-agent-backend.onrender.com
 
 ### Environment Variables in Production
 
