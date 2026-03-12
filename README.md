@@ -1,6 +1,6 @@
 # InMarket SDR Agent
 
-An automated Sales Development Representative (SDR) research and email drafting system. Given a company name, it fetches recent news via the Serper.dev API, synthesizes strategic insights using an LLM, and drafts a personalized outreach email—all through a clean single-page interface.
+An automated Sales Development Representative (SDR) research and email drafting system. Given a company name, it fetches recent news via the Serper.dev API, synthesizes strategic insights using an LLM, and drafts a personalized outreach email—all through a clean single-page interface. Built using Cursor IDE!
 
 ## Live Demo
 
